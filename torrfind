@@ -3,31 +3,26 @@
 import webbrowser
 import datetime
 import time
-lf0 = input("Buscar: ")
-lf1 = lf0.split(' ')
-if len(lf1) > 1:
-    a = 0
-    lf2 = ""
-    lf3 = ""
+from darkhold import convert
+resp = "y"
+while resp == "y":
+    lf0 = input("Buscar: ")
+    lf1 = lf0.split(' ')
     if len(lf1) > 1:
-        while a < len(lf1):
-            lf2 = lf2 + "+" + lf1[a]
-            a = a + 1
         a = 0
-        while a < len(lf1):
-            lf3 = lf3 + ' ' + lf1[a]
-            a = a + 1
-    string0 = "https://1337x.to/search/%s/1/" % (lf2,)
-    string1 = "https://thepiratebay.org/search/%s/0/99/0" % (lf3,)
-else:
-    string0 = "https://1337x.to/search/%s/1/" % (lf1,)
-    string1 = "https://thepiratebay.org/search/%s/0/99/0" % (lf1,)
-webbrowser.get("C:/Program Files/Mozilla Firefox/firefox.exe %s").open(string0)
-webbrowser.get("C:/Program Files/Mozilla Firefox/firefox.exe %s").open_new_tab(string1)
-print("Abriendo navegador...")
-time.sleep(3)
-hist = open("historial.txt", "a+")
-hist.write("\n" + lf0 + " " + str(datetime.datetime.now(tz=None)))
-hist.close()
-print("Historial guardado. Podes acceder al mismo en el directorio del programa.\n")
-input("Presione cualquier tecla para cerrar.")
+        lf2 = convert(lf1,"+")
+        lf3 = convert(lf1,' ')
+        string0 = "https://1337x.to/search/%s/1/" % (lf2,)
+        string1 = "https://thepiratebay.org/search/%s/0/99/0" % (lf3,)
+    else:
+        string0 = "https://1337x.to/search/%s/1/" % (lf1,)
+        string1 = "https://thepiratebay.org/search/%s/0/99/0" % (lf1,)
+    webbrowser.get().open(string0)
+    webbrowser.get().open_new_tab(string1)
+    print("Abriendo navegador...")
+    time.sleep(3)
+    hist = open("history.txt", "a+")
+    hist.write("\n" + lf0 + " " + str(datetime.datetime.now(tz=None)))
+    hist.close()
+    print("Historial guardado. Podes acceder al mismo en el directorio del programa.\n")
+    resp = input("Para realizar otra busqueda presione 'y' de lo contrario cualquier tecla: ")
