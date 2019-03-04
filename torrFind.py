@@ -60,7 +60,7 @@ while resp == "y":
     if check == "1": # Levanta 1337x
         link1 = "https://1337x.to" + targetLink1
         print(link1)
-        print("Abriendo magnet en navegador...")
+        print("Abriendo magnet link en tu software por defecto")
         print("")
         time.sleep(1)
         opener3 = urllib.request.build_opener()
@@ -76,7 +76,7 @@ while resp == "y":
         link2 = "https://thepiratebay.org" + targetLink2
         print(link2)
         print("")
-        print("Abriendo magnet en navegador...")
+        print("Abriendo magnet link en tu software por defecto")
         print("")
         time.sleep(1)
         opener4 = urllib.request.build_opener()
@@ -86,6 +86,7 @@ while resp == "y":
         soup4 = BeautifulSoup(pag4, 'html.parser')
         pTitle4 = soup4.find_all('a')
         targetLink4 = pTitle4[10].get('href')
+        print(targetLink4)
         webbrowser.get().open(targetLink4)
 
     else:
