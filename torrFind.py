@@ -48,50 +48,52 @@ while resp == "y":
     target2 = pTitle2[19]
     targetString2 = target2.string
     targetLink2 = target2.get('href')
-
-    print("")
-    print("1)" + targetString1)
-    print("")
-    print("2)" + targetString2)
-    print("")
-    check = input("¿Acceder a 1 o 2? ")
-    print("")
-
-    if check == "1": # Levanta 1337x
-        link1 = "https://1337x.to" + targetLink1
-        print(link1)
-        print("Abriendo magnet link en tu software por defecto")
-        print("")
-        time.sleep(1)
-        opener3 = urllib.request.build_opener()
-        opener3.addheaders = [('User-agent', 'Mozilla/5.0')]
-        response3 = opener3.open(link1)
-        pag3 = response3.read()
-        soup3 = BeautifulSoup(pag3, 'html.parser')
-        pTitle3 = soup3.find_all('a')
-        targetLink3 = pTitle3[32].get('href')
-        webbrowser.get().open(targetLink3)
-
-    elif check == "2": # Levanta TPB
-        link2 = "https://thepiratebay.org" + targetLink2
-        print(link2)
-        print("")
-        print("Abriendo magnet link en tu software por defecto")
-        print("")
-        time.sleep(1)
-        opener4 = urllib.request.build_opener()
-        opener4.addheaders = [('User-agent', 'Mozilla/5.0')]
-        response4 = opener4.open(link2)
-        pag4 = response4.read()
-        soup4 = BeautifulSoup(pag4, 'html.parser')
-        pTitle4 = soup4.find_all('a')
-        targetLink4 = pTitle4[10].get('href')
-        print(targetLink4)
-        webbrowser.get().open(targetLink4)
-
+    if targetString1 == None or targetString2 == None:
+        print("Parece que no hay resultados, revisa tu busqueda, yo reviso el código xD")
     else:
-        print("Bye!")
-        exit()
-
         print("")
-        resp = input("Para realizar otra busqueda presione 'y' de lo contrario cualquier tecla: ")
+        print("1)" + targetString1)
+        print("")
+        print("2)" + targetString2)
+        print("")
+        check = input("¿Acceder a 1 o 2? ")
+        print("")
+
+        if check == "1": # Levanta 1337x
+            link1 = "https://1337x.to" + targetLink1
+            print(link1)
+            print("Abriendo magnet link en tu software por defecto")
+            print("")
+            time.sleep(1)
+            opener3 = urllib.request.build_opener()
+            opener3.addheaders = [('User-agent', 'Mozilla/5.0')]
+            response3 = opener3.open(link1)
+            pag3 = response3.read()
+            soup3 = BeautifulSoup(pag3, 'html.parser')
+            pTitle3 = soup3.find_all('a')
+            targetLink3 = pTitle3[30].get('href')
+            webbrowser.get().open(targetLink3)
+
+        elif check == "2": # Levanta TPB
+            link2 = "https://thepiratebay.org" + targetLink2
+            print(link2)
+            print("")
+            print("Abriendo magnet link en tu software por defecto")
+            print("")
+            time.sleep(1)
+            opener4 = urllib.request.build_opener()
+            opener4.addheaders = [('User-agent', 'Mozilla/5.0')]
+            response4 = opener4.open(link2)
+            pag4 = response4.read()
+            soup4 = BeautifulSoup(pag4, 'html.parser')
+            pTitle4 = soup4.find_all('a')
+            targetLink4 = pTitle4[11].get('href')
+            webbrowser.get().open(targetLink4)
+
+        else:
+            print("Bye!")
+            exit()
+
+    print("")
+    resp = input("Para realizar otra busqueda presione 'y' de lo contrario cualquier tecla: ")
+    print("")
