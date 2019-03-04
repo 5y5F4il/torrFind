@@ -10,24 +10,24 @@ pag1 = response.read()
 soup1 = BeautifulSoup(pag1, 'html.parser')
 pTitle1 = soup1.find_all("a")
 target1 = pTitle1[31]
-targetString1 = pTitle1[31].string
-targetLink1 = pTitle1[31].get('href')
+targetString1 = target1.string
+targetLink1 = target1.get('href')
 
 pag2 = open("pagina_2.txt", 'r')
 
 soup2 = BeautifulSoup(pag2, 'html.parser')
 pTitle2 = soup2.find_all("a")
 target2 = pTitle2[19]
-targetString2 = pTitle2[19].string
-targetLink2 = pTitle2[19].get('href')
+targetString2 = target2.string
+targetLink2 = target2.get('href')
 print(pTitle2[19].string)
 
 # -----------------------------------------
 
 print("")
-print("1)" + pTitle1[31].string)
+print("1)" + targetString1)
 print("")
-print("2)" + pTitle2[19].string)
+print("2)" + targetString2)
 print("")
 check = input("¿Acceder a 1 o 2? ")
 
