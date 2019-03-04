@@ -23,6 +23,7 @@ while resp == "y":
     hist = open("history.txt", "a+")
     hist.write("\n" + lf0 + " " + str(datetime.datetime.now(tz=None)))
     hist.close()
+    print("")
     print("Historial guardado. Podes acceder al mismo en el directorio del programa.\n")
 
     opener1 = urllib.request.build_opener()
@@ -49,17 +50,18 @@ while resp == "y":
     targetLink2 = target2.get('href')
 
     print("")
-    print("1)" + pTitle1[31].string)
+    print("1)" + targetString1)
     print("")
-    print("2)" + pTitle2[19].string)
+    print("2)" + targetString2)
     print("")
     check = input("¿Acceder a 1 o 2? ")
-
+    print("")
 
     if check == "1": # Levanta 1337x
         link1 = "https://1337x.to" + targetLink1
         print(link1)
         print("Abriendo magnet en navegador...")
+        print("")
         time.sleep(1)
         opener3 = urllib.request.build_opener()
         opener3.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -73,19 +75,22 @@ while resp == "y":
     elif check == "2": # Levanta TPB
         link2 = "https://thepiratebay.org" + targetLink2
         print(link2)
+        print("")
         print("Abriendo magnet en navegador...")
+        print("")
         time.sleep(1)
         opener4 = urllib.request.build_opener()
         opener4.addheaders = [('User-agent', 'Mozilla/5.0')]
-        response4 = opener4.open(link1)
+        response4 = opener4.open(link2)
         pag4 = response4.read()
         soup4 = BeautifulSoup(pag4, 'html.parser')
         pTitle4 = soup4.find_all('a')
-        targetLink4 = pTitle4[15].get('href')
-        webbrowser.get().open(targetLink3)
+        targetLink4 = pTitle4[10].get('href')
+        webbrowser.get().open(targetLink4)
 
     else:
         print("Bye!")
         exit()
 
-    resp = input("Para realizar otra busqueda presione 'y' de lo contrario cualquier tecla: ")
+        print("")
+        resp = input("Para realizar otra busqueda presione 'y' de lo contrario cualquier tecla: ")
