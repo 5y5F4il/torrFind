@@ -39,14 +39,14 @@ while resp == "y":
     soup1 = BeautifulSoup(pag1, 'html.parser')
     pTitle1 = soup1.find_all("a")
     target1 = pTitle1[31]
-    targetString1 = pTitle1[31].string
-    targetLink1 = pTitle1[31].get('href')
+    targetString1 = target1.string
+    targetLink1 = target1.get('href')
 
     soup2 = BeautifulSoup(pag2, 'html.parser')
     pTitle2 = soup2.find_all("a")
     target2 = pTitle2[19]
-    targetString2 = pTitle2[19].string
-    targetLink2 = pTitle2[19].get('href')
+    targetString2 = target2.string
+    targetLink2 = target2.get('href')
 
     print("")
     print("1)" + pTitle1[31].string)
@@ -55,21 +55,37 @@ while resp == "y":
     print("")
     check = input("¿Acceder a 1 o 2? ")
 
+
     if check == "1": # Levanta 1337x
         link1 = "https://1337x.to" + targetLink1
         print(link1)
-        webbrowser.get().open(link1)
+        print("Abriendo magnet en navegador...")
+        time.sleep(1)
+        opener3 = urllib.request.build_opener()
+        opener3.addheaders = [('User-agent', 'Mozilla/5.0')]
+        response3 = opener3.open(link1)
+        pag3 = response3.read()
+        soup3 = BeautifulSoup(pag3, 'html.parser')
+        pTitle3 = soup3.find_all('a')
+        targetLink3 = pTitle3[32].get('href')
+        webbrowser.get().open(targetLink3)
 
     elif check == "2": # Levanta TPB
         link2 = "https://thepiratebay.org" + targetLink2
         print(link2)
-        webbrowser.get().open(link2)
+        print("Abriendo magnet en navegador...")
+        time.sleep(1)
+        opener4 = urllib.request.build_opener()
+        opener4.addheaders = [('User-agent', 'Mozilla/5.0')]
+        response4 = opener4.open(link1)
+        pag4 = response4.read()
+        soup4 = BeautifulSoup(pag4, 'html.parser')
+        pTitle4 = soup4.find_all('a')
+        targetLink4 = pTitle4[15].get('href')
+        webbrowser.get().open(targetLink3)
 
     else:
         print("Bye!")
         exit()
-
-    print("Abriendo navegador...")
-    time.sleep(1)
 
     resp = input("Para realizar otra busqueda presione 'y' de lo contrario cualquier tecla: ")
